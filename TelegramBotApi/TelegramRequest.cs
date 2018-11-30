@@ -33,6 +33,9 @@ namespace TelegramBotApi
                         e.message = r["message"]["text"];
                         e.chatID = r["message"]["chat"]["id"];
                     }
+
+                    SendMessage send = new SendMessage();
+                    send.SendMessageBase(e.chatID, e.message);
                 }
                 ResponseReceived(this, e);
             }
