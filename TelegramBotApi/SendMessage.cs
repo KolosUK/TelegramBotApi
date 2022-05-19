@@ -21,12 +21,12 @@ namespace TelegramBotApi
                 using (WebClient webClient = new WebClient())
                 {
                     NameValueCollection pars = new NameValueCollection();
-                    if (Message.Contains("Верогідність"))
+                    if (Message.Contains("Ймовірність"))
                     {
                         Random random = new Random();
                         int randomPersent = random.Next(0, 100);
                         pars.Add("chat_id", ChatID);
-                        pars.Add("text", "Верогідність " + randomPersent + " %");
+                        pars.Add("text", "Ймовірність " + randomPersent + " %");
                         webClient.UploadValues(Url + Token + "/sendMessage", pars);
                     }
 
@@ -80,6 +80,14 @@ namespace TelegramBotApi
                         webClient.UploadValues(Url + Token + "/sendPhoto", pars);
                     }
 
+                    if (Message.ToLower().Contains("кракен"))
+                    {
+                        pars.Add("chat_id", ChatID);
+                        pars.Add("video", "https://clikkappblobstorage.blob.core.windows.net/userphotos/IMG_4126.mp4");
+                        webClient.UploadValues(Url + Token + "/sendVideo", pars);
+                    }
+
+
                     if ( Message.Contains("Я жму") | Message.Contains("я жму") ) {
                         pars.Add("chat_id", ChatID);
                         var resultString = Regex.Match(Message, @"\d+").Value;
@@ -103,7 +111,7 @@ namespace TelegramBotApi
 
                     if (Message.Contains("Хто"))
                     {
-                        string[] pepole = {"Колос", "Сива", "Ніка", "Вуйко Тарас", "Володька", "Качетко", "Пелишка", "Макар", "Стьопа", "Жора", "Рижулька", "Софа Карпишин", "Джуля", "Римар", "Чопік", "Єнот", "Маша", "Серго", "Самий сексуальний Бодя", "Шаріф", "Чурка" };
+                        string[] pepole = { "Паша", "Юзік", "Суфікс", "Орест", "Микола", "Ростик", "жінка Ореста", "Діма", "Софія", "Христя", "Боря", "Амулет", "Іван", "Марян", "Орест молодший"};
                         Random rnd = new Random();
                         int person = rnd.Next(pepole.Length);
                         pars.Add("chat_id", ChatID);
@@ -113,7 +121,7 @@ namespace TelegramBotApi
                     if (Message.Contains("Команди"))
                     {
                         pars.Add("chat_id", ChatID);
-                        pars.Add("text", "Верогідність(вираховує вирогідність виникнення події), Чи(чи певна подія відбудетсья), Слава Україні, Хто(вираховує хто той самий), Я жму ( пишеш скільки кг і він пизначає хто ти є в залі), Артуррр(Фіча для Качетка)");
+                        pars.Add("text", "Ймовірність(вираховує ймовірність виникнення події), Чи(чи певна подія відбудетсья), Слава Україні, Хто(вираховує хто той самий), Я жму ( пишеш скільки кг і він пизначає хто ти є в залі), Артуррр(Фіча для Качетка)");
                         webClient.UploadValues(Url + Token + "/sendMessage", pars);
                     }
                 }
