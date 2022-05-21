@@ -30,6 +30,13 @@ namespace TelegramBotApi
                         webClient.UploadValues(Url + Token + "/sendMessage", pars);
                     }
 
+                    if (Message == "morning")
+                    {
+                        pars.Add("chat_id", ChatID);
+                        pars.Add("text", "Всім доброго ранку!! Нажаль путін собака ще не здох");
+                        webClient.UploadValues(Url + Token + "/sendMessage", pars);
+                    }
+                    
                     if (Message.Contains("Чи") || Message.Contains(" чи "))
                     {
                         Random random = new Random();

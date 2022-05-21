@@ -1,6 +1,7 @@
 ﻿using System;
 using SimpleJSON;
 using System.Net;
+using System.Text;
 using System.Threading;
 using TelegramBotApi.Models;
 
@@ -23,7 +24,8 @@ namespace TelegramBotApi
 
         private static void Tr_ResponseReceived(object sendr, ParameterResponse e)
         {
-            Console.WriteLine("{0}: {1}   chatId:{2}", e.name, e.message, e.chatID);
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.WriteLine("{0}: {1}  chatId:{2}", e.name, e.message, e.chatID);
         }
 
         public delegate void Response(object sendr, ParameterResponse e);
